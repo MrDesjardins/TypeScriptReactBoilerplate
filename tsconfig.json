@@ -4,11 +4,8 @@
     "target": "es6",
     "module": "amd",
     "outDir": "./deploy/output",
-    "types": [
-      "jquery",
-      "requirejs",
-      "lodash"
-    ]
+    "jsx": "react",
+    "noImplicitAny": true
   },
   "exclude": [
     "node_modules",

@@ -1,6 +1,6 @@
-# Boilerplate for TypeScript Project
+# Boilerplate for TypeScript and React Project
 
-Boilerplate for using TypeScript with a small web server. Ideal for testing small code in TypeScript.
+Boilerplate for using TypeScript with React with a small web server. Ideal for testing small code in TypeScript and React.
 
 - TypeScript
 - Typings/@Types
@@ -8,6 +8,7 @@ Boilerplate for using TypeScript with a small web server. Ideal for testing smal
 - Importing third-party (JS) available across scripts
 - Modules import + lazy loaded
 - Server with watcher + autoreload
+- React
 
 ## Setup
 ```

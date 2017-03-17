@@ -11,7 +11,7 @@ const changed = require('gulp-cached');
 
 const server_port = 8080;
 var paths = {
-    sourceRoot : "./app/",
+    sourceRoot: "./app/",
     webroot: "./deploy/",
     node_modules: "./node_modules/",
 };
@@ -19,14 +19,16 @@ var paths = {
 paths.modulesDestination = paths.webroot + "vendors/";
 paths.typescript_in = paths.sourceRoot + "scripts/";
 paths.typescript_out = paths.webroot + "output"
-paths.allTypeScript = paths.typescript_in + "**/*.ts";
+paths.allTypeScript = paths.typescript_in + "**/*.{ts,tsx}";
 
 //------------------------ Tasks ------------------------
 
 gulp.task("clean", (callback) => {
     var typeScriptGenFiles = [
         paths.typescript_out + "/**/*.js",
-        paths.typescript_out + "/**/*.js.map"
+        paths.typescript_out + "/**/*.js.map",
+        paths.typescript_in + "/**/*.js",
+        paths.typescript_in + "/**/*.js.map"
     ];
 
     del(typeScriptGenFiles, callback);
@@ -41,6 +43,8 @@ gulp.task("copy", () => {
         //"bootstrap": "bootstrap/dist/**/*.{js,map,css,ttf,svg,woff,eot}",
         "jquery": "jquery/dist/jquery*.{js,map}",
         "lodash": "lodash/lodash*.{js,map}",
+        "react": "react/**/*.{js,map}",
+        "react-dom": "react-dom/**/*.{js,map}",
         "requirejs": "requirejs/*.{js,map}"
     }
 
@@ -53,7 +57,7 @@ gulp.task("copy", () => {
 });
 
 gulp.task("build", () => {
-    var compilationResults = gulp.src(paths.typescript_in+"**/*.ts")
+    var compilationResults = gulp.src(paths.allTypeScript)
         .pipe(sourcemaps.init())
         .pipe(tsProject())
     compilationResults.dts.pipe(gulp.dest(paths.typescript_out));
@@ -93,17 +97,17 @@ gulp.task("buildsinglefile", () => {
 });
 
 gulp.task('htmlreload', () => {
-  gulp.src(paths.sourceRoot + '*.html')
-    .pipe(connect.reload());
+    gulp.src(paths.sourceRoot + '*.html')
+        .pipe(connect.reload());
 });
 
 gulp.task('tsreload', () => {
-  gulp.src(paths.typescript_in + '*.ts')
-    .pipe(connect.reload());
+    gulp.src(paths.typescript_in + '*.ts')
+        .pipe(connect.reload());
 });
 
 gulp.task('watch', (callback) => {
-    gulp.watch(paths.allTypeScript).on("change", function(file) {
+    gulp.watch(paths.allTypeScript).on("change", function (file) {
         var compilationResults = gulp.src(paths.allTypeScript)
             .pipe(changed(paths.typescript_out))
             .pipe(sourcemaps.init())
@@ -119,11 +123,11 @@ gulp.task('watch', (callback) => {
 });
 
 gulp.task('server', () => {
-  connect.server({
-    root: paths.webroot,
-    livereload: true,
-    port: server_port
-  });
+    connect.server({
+        root: paths.webroot,
+        livereload: true,
+        port: server_port
+    });
 });
 
 gulp.task('go', ["buildall", "server", "watch"], () => {

@@ -14,8 +14,9 @@
   "author": "Patrick Desjardins",
   "devDependencies": {
     "@types/jquery": "latest",
-    "@types/lodash": "latest",
     "@types/requirejs": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
     "del": "latest",
     "gulp": "latest",
     "gulp-cached": "latest",
@@ -24,11 +25,12 @@
     "gulp-tslint": "latest",
     "gulp-typescript": "latest",
     "tslint": "latest",
-    "typescript": "next"
+    "typescript": "latest"
   },
   "dependencies": {
     "jquery": "latest",
-    "requirejs": "latest",
-    "lodash": "latest"
+    "react": "latest",
+    "react-dom": "latest",
+    "requirejs": "latest"
   }
 }
