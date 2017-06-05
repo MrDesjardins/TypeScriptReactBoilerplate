@@ -2,7 +2,7 @@
   "compilerOptions": {
     "sourceMap": true,
     "target": "es6",
-    "module": "amd",
+    "module": "commonjs",
     "outDir": "./deploy/output",
     "jsx": "react",
     "noImplicitAny": true

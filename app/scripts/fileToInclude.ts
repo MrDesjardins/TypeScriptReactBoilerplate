@@ -1,4 +1,5 @@
-﻿import { ClassB } from "folder1/file2";
+﻿import { ClassB } from "./folder1/file2";
+import * as $ from "jquery";
 export class ClassA {
     public method1(): void {
         const text = "Hello TypeScript!";

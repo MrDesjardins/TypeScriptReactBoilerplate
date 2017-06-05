@@ -1,7 +1,7 @@
 ﻿  import { ClassA } from "./fileToInclude";
   import * as React from "react";
   import * as ReactDOM from "react-dom";
-  import { Component } from "component1";
+  import { Component } from "./component1";
 
   const a = new ClassA();
   const x = 2;
