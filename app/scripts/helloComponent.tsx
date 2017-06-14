@@ -1,9 +1,9 @@
 import * as React from "react";
-interface ComponentProps {
+interface HelloComponentProps {
     name: string;
 }
 
-export class Component extends React.Component<ComponentProps, {}> {
+export class HelloComponent extends React.Component<HelloComponentProps, {}> {
     public render(): JSX.Element {
         return <div>React: Hello, {this.props.name}</div >;
     }
